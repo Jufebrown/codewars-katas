@@ -25,10 +25,24 @@ Simple Pig Latin
 ***************/
 // Move the first letter of each word to the end of it, then add 'ay' to the end of the word.
 
-function pigIt(str){
-  let workingArray = str.split(" ")
-  for (var i = 0; i < workingArray.length; i++) {
-    workingArray[i] = workingArray[i].substr(1) + workingArray[i].substr(0, 1)
-  }
-  return workingArray.join("ay ").concat("ay")
+// function pigIt(str){
+//   let workingArray = str.split(" ")
+//   for (var i = 0; i < workingArray.length; i++) {
+//     workingArray[i] = workingArray[i].substr(1) + workingArray[i].substr(0, 1)
+//   }
+//   return workingArray.join("ay ").concat("ay")
+// }
+
+
+/***************
+Duplicate Encoder
+***************/
+
+// The goal of this exercise is to convert a string to a new string where each
+// character in the new string is '(' if that character appears only once in the
+// original string, or ')' if that character appears more than once in the original string.
+// Ignore capitalization when determining if a character is a duplicate.
+
+function duplicateEncode(word){
+
 }
