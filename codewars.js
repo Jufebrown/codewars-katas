@@ -26,5 +26,9 @@ Simple Pig Latin
 // Move the first letter of each word to the end of it, then add 'ay' to the end of the word.
 
 function pigIt(str){
-  //Code here
+  let workingArray = str.split(" ")
+  for (var i = 0; i < workingArray.length; i++) {
+    workingArray[i] = workingArray[i].substr(1) + workingArray[i].substr(0, 1)
+  }
+  return workingArray.join("ay ").concat("ay")
 }
