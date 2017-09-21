@@ -1,0 +1,23 @@
+{
+  "name": "codewars-katas",
+  "version": "1.0.0",
+  "description": "just a place to store codewars solutions",
+  "main": "codewars.js",
+  "dependencies": {
+    "eslint": "^4.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jufebrown/codewars-katas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jufebrown/codewars-katas/issues"
+  },
+  "homepage": "https://github.com/Jufebrown/codewars-katas#readme"
+}
