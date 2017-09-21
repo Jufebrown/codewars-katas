@@ -97,22 +97,66 @@ Merged String Checker
 // part1:  c   d   w         = cdw
 // part2:    o   e   a r s   = oears
 
-const isMerge = (s, part1, part2) => {
-  let part1Pos = 0;
-  let part2Pos = 0;
-  if(s.length !== part1.concat(part2).length) {
-    return false
-  }
-  for (let i = 0; i < s.length; i++) {
-    if(s[i] !== part1[part1Pos]) {
-      if(s[i] !== part2[part2Pos]) {
-        return false;
-      } else {
-        part2Pos++;
-      } 
-    } else {
-      part1Pos++;
-    }
-  }
-  return true;
+// const isMerge = (s, part1, part2) => {
+//   let part1Pos = 0;
+//   let part2Pos = 0;
+//   console.log('s:', s, 'part1:', part1, 'part2:', part2);
+//   if(s.split(' ').length > 1) {
+//     let sArr = s.split(' ');
+//     let part1Arr = part1.split(' ');
+//     let part2Arr = part2.split(' ');
+//     let part1ArrPos = 0;
+//     let part2ArrPos = 0;
+//     for (let i = 0; i < sArr.length; i++) {
+//       if (sArr[i] !== part1Arr[part1ArrPos]) {
+//         if (sArr[i] !== part2Arr[part2ArrPos]) {
+//           return false;
+//         }
+//       }
+//     }
+//   }
+
+//   if(s.length !== part1.concat(part2).length) {
+//     console.log('false');
+//     return false;
+//   }
+//   for (let i = 0; i < s.length; i++) {
+//     if(s[i] !== part1[part1Pos]) {
+//       if(s[i] !== part2[part2Pos]) {
+//         console.log('false');        
+//         return false;
+//       } else {
+//         part2Pos++;
+//       } 
+//     } else {
+//       part1Pos++;
+//     }
+//   }
+//   console.log('true');
+//   return true;
+// };
+
+// isMerge('Bananas from Bahamas', 'Bahas', 'Bananas from am' );
+
+// couldn't pass all tests here's best practices:
+function isMerge(s, part1, part2) {
+  return !s ? !(part1 || part2) :
+    s[0] == part1[0] && isMerge(s.slice(1), part1.slice(1), part2) ||
+    s[0] == part2[0] && isMerge(s.slice(1), part1, part2.slice(1));
+}
+
+
+/***************
+Break camelCase
+***************/
+
+// Complete the solution so that the function will break up camel casing, using a space between words.
+
+// Example
+// solution('camelCasing') // => should return 'camel Casing'
+
+const solution = (str) => {
+  return str.replace(/([A-Z])/g, ' $1');
 };
+
+solution('camelCasing');
