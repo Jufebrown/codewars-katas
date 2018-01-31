@@ -387,15 +387,79 @@ Next bigger number with the same digits
 // nextBigger(111)==-1
 // nextBigger(531)==-1
 
-const singleDigitCheck = () => {
+// const singleDigitCheck = () => {
 
-}
+// }
 
-function nextBigger(n) {
-  let returnValue;
-  if(n <== 9) {
-    
-  } else {
+// function nextBigger(n) {
+//   let returnValue;
+//   if(n <== 9) {
 
+//   } else {
+
+//   }
+// }
+
+/***************
+Hamming Numbers
+***************/
+
+// A Hamming number is a positive integer of the form 2^i3^j5^k, for some non-negative integers i, j, and k.
+
+// Write a function that computes the nth smallest Hamming number.
+
+// Specifically:
+
+// The first smallest Hamming number is 1 = 2^03^05^0
+// The second smallest Hamming number is 2 = 2^13^05^0
+// The third smallest Hamming number is 3 = 2^03^15^0
+// The fourth smallest Hamming number is 4 = 2^23^05^0
+// The fifth smallest Hamming number is 5 = 2^03^05^1
+// The 20 smallest Hamming numbers are given in example test fixture.
+
+// Your code should be able to compute all of the smallest 5,000 (Clojure: 2000) Hamming numbers without timing out.
+
+// exponents for first numbers
+// 000 == 1
+// 100 == 2
+// 010 == 3
+// 200 == 4
+// 001 == 5
+// 110 == 6
+// 300 == 8
+// 020 == 9
+// 101 == 10
+// 210 == 12
+// 011 == 15
+// 400 == 16
+// 120 == 18
+// 201 == 20
+// 310 == 24
+// 002 == 25
+// 030 == 27
+// 111 == 30
+// 500 == 32
+// 220 == 36
+// 301 == 40
+// 021 == 45
+// 102 == 50
+// 130 == 54
+
+let hammingArr = [];
+for (let i = 0; i < 100; i++) {
+  for (let j = 0; j < 50; j++) {
+    for (let k = 0; k < 20; k++) {
+      let num = Math.pow(2, i) * Math.pow(3, j) * Math.pow(5, k);
+      hammingArr.push(num);
+    }
   }
 }
+
+hammingArr.sort(function(a, b) {
+  return a - b;
+});
+
+const hamming = n => {
+  n--;
+  return hammingArr[n];
+};
