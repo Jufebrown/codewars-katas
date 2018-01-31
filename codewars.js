@@ -6,9 +6,10 @@ Camel Case
 // delimited words into camel casing. The first word within the output
 // should be capitalized only if the original word was capitalized.
 
-const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+const capitalizeFirstLetter = string =>
+  string.charAt(0).toUpperCase() + string.slice(1);
 
-function toCamelCase(str){
+function toCamelCase(str) {
   let workingArray = str.split(/[\-_]+/);
   for (var i = 1; i < workingArray.length; i++) {
     workingArray[i] = capitalizeFirstLetter(workingArray[i]);
@@ -16,20 +17,18 @@ function toCamelCase(str){
   return workingArray.join('');
 }
 
-
 /***************
 Simple Pig Latin
 ***************/
 // Move the first letter of each word to the end of it, then add 'ay' to the end of the word.
 
-function pigIt(str){
+function pigIt(str) {
   let workingArray = str.split(' ');
   for (var i = 0; i < workingArray.length; i++) {
     workingArray[i] = workingArray[i].substr(1) + workingArray[i].substr(0, 1);
   }
   return workingArray.join('ay ').concat('ay');
 }
-
 
 /***************
 Duplicate Encoder
@@ -40,7 +39,7 @@ Duplicate Encoder
 // original string, or ')' if that character appears more than once in the original string.
 // Ignore capitalization when determining if a character is a duplicate.
 
-function duplicateEncode(word){
+function duplicateEncode(word) {
   let workingArray = word.split('');
   let resultArray = [];
   for (var i = 0; i < workingArray.length; i++) {
@@ -59,14 +58,13 @@ function duplicateEncode(word){
   return resultArray.join('');
 }
 
-
 /***************
 Moving Zeros To The End
 ***************/
 
 // Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
 
-const moveZeros = function (arr) {
+const moveZeros = function(arr) {
   let len = arr.length;
   for (var i = 0; i < len; i++) {
     if (arr[i] === 0) {
@@ -77,7 +75,6 @@ const moveZeros = function (arr) {
   }
   return arr;
 };
-
 
 /***************
 Merged String Checker
@@ -123,11 +120,11 @@ Merged String Checker
 //   for (let i = 0; i < s.length; i++) {
 //     if(s[i] !== part1[part1Pos]) {
 //       if(s[i] !== part2[part2Pos]) {
-//         console.log('false');        
+//         console.log('false');
 //         return false;
 //       } else {
 //         part2Pos++;
-//       } 
+//       }
 //     } else {
 //       part1Pos++;
 //     }
@@ -140,11 +137,11 @@ Merged String Checker
 
 // couldn't pass all tests here's best practices:
 function isMerge(s, part1, part2) {
-  return !s ? !(part1 || part2) :
-    s[0] == part1[0] && isMerge(s.slice(1), part1.slice(1), part2) ||
-    s[0] == part2[0] && isMerge(s.slice(1), part1, part2.slice(1));
+  return !s
+    ? !(part1 || part2)
+    : (s[0] == part1[0] && isMerge(s.slice(1), part1.slice(1), part2)) ||
+        (s[0] == part2[0] && isMerge(s.slice(1), part1, part2.slice(1)));
 }
-
 
 /***************
 Break camelCase
@@ -155,12 +152,11 @@ Break camelCase
 // Example
 // solution('camelCasing') // => should return 'camel Casing'
 
-const solution = (str) => {
+const solution = str => {
   return str.replace(/([A-Z])/g, ' $1');
 };
 
 solution('camelCasing');
-
 
 /***************
 IP validation
@@ -186,7 +182,6 @@ IP validation
 function isValidIP(str) {
   return /^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|$)){4}$/.test(str);
 }
-
 
 /***************
 Catching Car Mileage Numbers
@@ -233,14 +228,14 @@ Catching Car Mileage Numbers
 // The awesomePhrases array will always be provided, and will always be an array, but may be empty. (Not everyone thinks numbers spell funny words...)
 // You should only ever output 0, 1, or 2.
 
-const incrementingCheck = (numString) => {
+const incrementingCheck = numString => {
   let prev = 0;
-  for (var i  = 1; i < numString.length; i++) {
-    if(parseInt(numString[prev]) === 9) {
-      if(parseInt(numString[i]) !== 0) {
+  for (var i = 1; i < numString.length; i++) {
+    if (parseInt(numString[prev]) === 9) {
+      if (parseInt(numString[i]) !== 0) {
         return false;
       }
-    } else if(parseInt(numString[i]) !== parseInt(numString[prev]) + 1) {
+    } else if (parseInt(numString[i]) !== parseInt(numString[prev]) + 1) {
       return false;
     }
     prev++;
@@ -248,10 +243,10 @@ const incrementingCheck = (numString) => {
   return true;
 };
 
-const decrementingCheck = (numString) => {
+const decrementingCheck = numString => {
   let prev = 0;
-  for (var i  = 1; i < numString.length; i++) {
-    if(parseInt(numString[i]) !== parseInt(numString[prev]) - 1) {
+  for (var i = 1; i < numString.length; i++) {
+    if (parseInt(numString[i]) !== parseInt(numString[prev]) - 1) {
       return false;
     }
     prev++;
@@ -261,45 +256,50 @@ const decrementingCheck = (numString) => {
 
 const isInteresting = (number, awesomePhrases) => {
   // checks to see if number is less than 98
-  if(number < 98) {
+  if (number < 98) {
     return 0;
   }
 
-  if(number === 98 || number === 99) {
+  if (number === 98 || number === 99) {
     return 1;
   }
 
   let numberPlus1 = number + 1;
   let numberPlus2 = number + 2;
-  
+
   //checking to see if number is all repeated digits
   let numberString = number.toString();
-  let numberPlus1String = (numberPlus1).toString();
-  let numberPlus2String = (numberPlus2).toString();
-  console.log('repeat', /^(.)\1+$/.test(numberString))
-  if(/^(.)\1+$/.test(numberString)) {
+  let numberPlus1String = numberPlus1.toString();
+  let numberPlus2String = numberPlus2.toString();
+  console.log('repeat', /^(.)\1+$/.test(numberString));
+  if (/^(.)\1+$/.test(numberString)) {
     return 2;
   }
-  if(/^(.)\1+$/.test(numberPlus1String) || /^(.)\1+$/.test(numberPlus2String)) {
+  if (
+    /^(.)\1+$/.test(numberPlus1String) ||
+    /^(.)\1+$/.test(numberPlus2String)
+  ) {
     return 1;
   }
 
   // checks to see if number is a digit followed by zeros
   let tenPower = number.toString().length;
-  let tenPowered = Math.pow(10, tenPower-1);
+  let tenPowered = Math.pow(10, tenPower - 1);
   let zerocheck = number % tenPowered;
-  if(zerocheck === 0) {
+  if (zerocheck === 0) {
     return 2;
-  } else if(numberPlus1 % tenPowered === 0 || numberPlus2 % tenPowered === 0) {
+  } else if (numberPlus1 % tenPowered === 0 || numberPlus2 % tenPowered === 0) {
     return 1;
   }
 
-
   // test awesome array
   for (let i = 0; i < awesomePhrases.length; i++) {
-    if(number === awesomePhrases[i]) {
+    if (number === awesomePhrases[i]) {
       return 2;
-    } else if (numberPlus1 === awesomePhrases[i] || numberPlus2 === awesomePhrases[i]) {
+    } else if (
+      numberPlus1 === awesomePhrases[i] ||
+      numberPlus2 === awesomePhrases[i]
+    ) {
       return 1;
     }
   }
@@ -307,26 +307,48 @@ const isInteresting = (number, awesomePhrases) => {
   // test incrementing
   if (incrementingCheck(numberString)) {
     return 2;
-  } else if(incrementingCheck(numberPlus1String) || incrementingCheck(numberPlus2String)) {
+  } else if (
+    incrementingCheck(numberPlus1String) ||
+    incrementingCheck(numberPlus2String)
+  ) {
     return 1;
   }
   // test decrementing
   if (decrementingCheck(numberString)) {
     return 2;
-  } else if(decrementingCheck(numberPlus1String) || decrementingCheck(numberPlus2String)) {
+  } else if (
+    decrementingCheck(numberPlus1String) ||
+    decrementingCheck(numberPlus2String)
+  ) {
     return 1;
   }
 
   // checks palindrome
-  if(numberString === numberString.split('').reverse().join('')) {
+  if (
+    numberString ===
+    numberString
+      .split('')
+      .reverse()
+      .join('')
+  ) {
     return 2;
-  } else if(numberPlus1String === numberPlus1String.split('').reverse().join('') || numberPlus2String === numberPlus2String.split('').reverse().join('')) {
+  } else if (
+    numberPlus1String ===
+      numberPlus1String
+        .split('')
+        .reverse()
+        .join('') ||
+    numberPlus2String ===
+      numberPlus2String
+        .split('')
+        .reverse()
+        .join('')
+  ) {
     return 1;
   }
 
   return 0;
 };
-
 
 // best practices answer:
 
@@ -339,7 +361,7 @@ const isInteresting = (number, awesomePhrases) => {
 //     function(n) { return n + '' == (n + '').split('').reverse().join(''); },
 //     function(n) { return awesomePhrases.some(function(p) { return p == n; }); }
 //   ];
-  
+
 //   var interesting = 0;
 //   tests.some(function(test) {
 //     if (number > 99 && test(number))
@@ -350,3 +372,30 @@ const isInteresting = (number, awesomePhrases) => {
 //   return interesting;
 // }
 
+/***************
+Next bigger number with the same digits
+***************/
+
+// You have to create a function that takes a positive integer number and returns the next bigger number formed by the same digits:
+
+// nextBigger(12)==21
+// nextBigger(513)==531
+// nextBigger(2017)==2071
+// If no bigger number can be composed using those digits, return -1:
+
+// nextBigger(9)==-1
+// nextBigger(111)==-1
+// nextBigger(531)==-1
+
+const singleDigitCheck = () => {
+
+}
+
+function nextBigger(n) {
+  let returnValue;
+  if(n <== 9) {
+    
+  } else {
+
+  }
+}
